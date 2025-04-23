@@ -18,10 +18,15 @@
       
           <div id="text-container" class="flex flex-col items-center">
             <div id="story-text" class="my-4 text-gray-800 min-h-[100px] text-center"></div>
-            <input type="text" id="command-input" placeholder="Type your command here..." class="border rounded-md p-2 w-[200px]" autofocus />
+          
+            <div id="enter-hint" class="text-sm text-gray-500 italic mt-2 hidden">
+              Press Enter to continue...
+            </div>
+          
+            <input type="text" id="command-input" placeholder="Type your command here..." class="border rounded-md p-2 w-[200px] hidden" autofocus />
           </div>
       
-        <script src="script.js"></script>
+          <script src="game.js"></script>
       </body>
 
 </html>
