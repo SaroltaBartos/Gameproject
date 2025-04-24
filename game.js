@@ -10,20 +10,20 @@ class SceneIntro {
 const journalIntro = new SceneIntro(
     "Intro",
     [
-      "I have locked him away, deep within the mountain, with the strongest spells acting on my command.",
-      "The chains keep him down... but I can feel it—they are weakening as I write these lines.",
-      "I know the time will come when eventually Azerak will be free and bring evil upon our world.",
-      "This is why I am writing this book. To you, on whom this crucial task now falls.",
+      "Entry from the priestess's journal: I have locked him away, deep within the mountain, using the strongest spells under my command.",
+      "The chains hold him down... but I can feel it — they are weakening as I write these lines.",
+      "I know the time will come when Azerak will break free and bring evil upon our world.",
+      "This is why I am writing this book — to you, the one upon whom this crucial task now falls.",
       "Heed my words, follow my instructions, and... good luck."
     ],
     "https://i.ibb.co/CsQHWKsy/Chat-GPT-Image-Apr-23-2025-11-40-40-AM.png"
   );
 
 const gameintro = new SceneIntro(
-    "Tower Awakening",
+    "Intro2",
     [
      "High above the world, on a mountain peak, stood a great castle. It was home to the priestesses who once protected the kingdom.",
-     "A thousand years after a powerful priestess sealed him away, the Demon Lord Azerak finally broke free from his chains.",
+     "It was a peaceful land, until one day the Demon Lord, who was sealed away by a powerful pristess a thousand years ago, managed to break free.",
      "His dark presence quickly spread through the castle in the form of a strange mist.",
      "Everyone touched by the mist fell into an eternal sleep.",
      "You, a young priestess, managed to hide in one of the high towers with the help of an Elder — an old priestess who cast a protective spell over a few survivors."
@@ -61,9 +61,8 @@ function startGame() {
 document.addEventListener("keydown", handleEnter);
 
 class Room {
-    constructor(name, description, image) {
+    constructor(name, image) {
       this.name = name;                 
-      this.description = description;   
       this.image = image;               
       this.scene = null;                
       this.items = [];                  
@@ -73,59 +72,65 @@ class Room {
 
 const tower = new Room(
   "Tower",
-  "You're in the high tower where the old priestess lives. The air feels heavy with magic.",
-  "Tower"
+  "https://i.ibb.co/BVBx704K/Chat-GPT-Image-Apr-23-2025-11-42-54-AM.png"
 );
 tower.scene = [
-  "The old priestess stands by the window, her eyes filled with ancient wisdom.",
-  "She hands you a glowing book — the one she spoke of in the stories.",
-  "The first Relic has been passed to you, a gem that seems to glow with the flame of another world.",
-  "She warns you that you have to follow the instructions in the book in order to find the missing relic.",
-  "Without that you won't be able strengthen the chains on the demon lord.",
-  "Type Follow Instrucitons if you wish to look for the missing relic.",
-  "If you wish to face the Demon Lord now, type Go to Demon Lord.",
-  //Out input form in html is currently hidden, have to update it.
+ "You're in the high tower with the old priestess. The air feels heavy with magic.",
+  "She hands you an old book — the journal of the priestess who defeated the demon lord a thousand years ago. It is preserved by magic.",
+  "The old priestess also hands you the first Relic: a knife with a red gem in its handle that seems to glow with the flame of another world.",
+  "She warns you that you must follow the instructions in the book to find the missing relic and defeat the demon lord.",
+  "Type FOLLOW INSTRUCTIONS if you wish to look for the missing relic.",
+  "If you wish to face the Demon Lord now, type GO TO DEMON LORD."
 ];
-tower.items.push("relic1");
 
 const library = new Room(
   "Library",
-  "The instructions in the book have led you to the Library. The air smells of old books, and there is sunlight filtering through the windows, as if the world was still peaceful, still untouched by evil.",
-  "Library picture"
+  "https://i.ibb.co/HDfBc3pf/Chat-GPT-Image-Apr-24-2025-03-32-39-PM.png"
 );
-library.scene = [
-  "It takes hours, but you finally find a hidden room in the Library, in the middle of it stands a small, but richly decorated chest andored with symbols you have never seen before.",
+library.scenePart1 = [
+  "The instructions in the book have led you to the Library. The air smells of old books, and sunlight filters through the windows, as if the world were still peaceful — still untouched by evil.",
+  "It takes hours, but you finally find a hidden room in the Library. In the middle of it stands a small, richly decorated chest adorned with symbols you have never seen before.",
   "There is a heavy lock on the chest, which you try to force open with your bare hands.",
-  "Realising that you will need to find the key to open it, you look for answers in the book - And find that there you can open the thick binding of the book.",
-  "A small key falls on the floor in front of you.",
-  "Type Collect Key to pick up the key and open the chest.",
-  //here we need to wait for the user to type collect key and press enter --- somehow update parapgraph to the following:
-  "You have received the second relic: a knife, with a gem in it's handle, the blue so deep, it reminds of long nights, when all the light seems to disappear fromt he world.",
-  "You have both Relics now. Type Go To Demon Lord",
+  "Realizing that you’ll need a key, you look for answers in the book — and discover that the thick binding can be opened.",
+  "A small key falls to the floor in front of you.",
+  "Type COLLECT KEY to pick up the key and open the chest.",
 ];
-library.items.push("relic2");
+
+library.scenePart2 = [
+  "You have received the second relic: a knife with a gem in its handle — a blue so deep, it evokes long nights when all the light seems to disappear from the world.",
+  "You now hold both relics. Type GO TO DEMON LORD.",
+];
 
 const throneRoom = new Room( //only to be used if the win conditions are met
   "Throne Room",
-  "The power in the relics lead you to the Azerak, who has taken over the Throne Room of the Castle. He is perched on the Throne, like it has always blonged to him, ready to take over the rest of the world. He has ice cold eyes, an sking that seems to melt off his bones.",
-  "Throne Room picture"
+  "https://i.ibb.co/Z6kr0YsB/Chat-GPT-Image-Apr-23-2025-11-34-07-AM.png"
 );
 throneRoom.scene = [
-  "Azerak faces you, boredome in his gaze, and he motions with his hands, sending magic in your way.",
-  "You can feel its malice, and you would have died right on the spot if it wasn't for the Relics casting a protective shield around you.",
-  "Azerak seems puzzled by the shield, until he sees the Relics in your possession. He lets out an enraged scream, and swift like lightning, he is right in front of you in the next moment, lifting the sword in his hand to strike you down.",
-  "A stange magic seems to take over you body. Perhaps it was the magic of the Relics. Or maybe the spirit of the priestess, who has somehow lingered in this world for the past 1000 years, knowing that this day would eventually come.",
-  "You can feel the knives gravitate towards each other, following their pull, you hold the next to each other by the tip of their handle.",
-  "The gems inside melt and merge together, creating a swirling vortex of red and blue, creating a single, double bladed knife.",
-  "Type Use knife to defeat the demon lord.",
-  //wait for user to type and press enter
-  "With a simple motion you drive the knife forward, straight into the ribs of Azerak. With a light that is almost blinding, the demon lord disappears from this word once again.",
-  "You standl alon in the Throne Room, but in the distance you can hear as people start to awaken, confused about why they were asleep in the first place.",
-  "Congratulations, you have save the kingdom",
+  "The power of the relics leads you to the demon lord, who has taken over the Throne Room of the castle. He is perched on the throne as if it has always belonged to him, ready to claim the rest of the world.",
+  "He has ice-cold eyes and skin that seems to melt off his bones.",
+  "The demon lord faces you, boredom in his gaze, and he motions with his hand, sending magic your way.",
+  "You can feel its malice, and you would have died on the spot if not for the relics casting a protective shield around you.",
+  "He seems puzzled by the shield — until he sees the relics in your possession. He lets out an enraged scream, and like lightning, he is in front of you, lifting his sword to strike.",
+  "A strange magic begins to take over your body. Perhaps it's the power of the relics... or maybe the spirit of the priestess, who has lingered in this world for the past 1,000 years, knowing this day would come.",
+  "You feel the knives gravitate toward each other. Following their pull, you hold them together by the tips of their handles.",
+  "The gems inside melt and merge, forming a swirling vortex of red and blue — a single, double-bladed knife.",
+  "Type USE KNIFE to defeat the demon lord.",
+];
+
+const throneRoomAlternative = new Room( //only to be used if win conditions are NOT met
+  "Throne Room",
+  "https://i.ibb.co/Z6kr0YsB/Chat-GPT-Image-Apr-23-2025-11-34-07-AM.png"
+);
+throneRoomAlternative.scene = [
+  "Led by the sole relic in your hand and the confidence in your veins, you finally find the demon lord in the Throne Room. He is perched on the throne as if it has always belonged to him, ready to take over the rest of the world. His eyes are ice cold, and his skin seems to melt off his bones.",
+  "The demon lord faces you, boredom in his gaze, and he motions with his hand, sending magic your way.",
+  "You can feel its malice, and you suddenly regret your hasty decision to approach the demon lord without the second relic.",
+  "As his magic envelops you, the single relic slips from your hands, and you scream out in pain—",
+  "It seems you were not ready to face the demon lord yet.",
 ];
 
 
-let currentRoom = null; // global tracker
+let currentRoom = null; 
 
 function startFirstRoom() {
   currentRoom = tower;
@@ -135,4 +140,118 @@ function startFirstRoom() {
   const inputBox = document.getElementById("command-input");
   inputBox.classList.remove("hidden");
   inputBox.focus();
+  tower.items.push("relic1");
+}
+
+function enterRoom(room) {
+  currentRoom = room;
+  sceneImage.src = room.image;
+
+  const inputBox = document.getElementById("command-input");
+  inputBox.classList.remove("hidden");
+  inputBox.focus();
+
+  if (room === library) {
+    storyText.innerHTML = library.scenePart1.map(p => `<p>${p}</p>`).join("");
+  } else {
+    storyText.innerHTML = room.scene.map(p => `<p>${p}</p>`).join("");
+  }
+}
+
+const inputBox = document.getElementById("command-input");
+
+inputBox.addEventListener("keydown", function (event) {
+  if (event.key === "Enter") {
+    const command = inputBox.value.trim().toLowerCase();
+    handleCommand(command);
+    inputBox.value = ""; 
+  }
+});
+
+function handleCommand(command) {
+  if (currentRoom === tower) {
+    if (command === "follow instructions") {
+      enterRoom(library);
+    } else if (command === "go to demon lord") {
+      if (tower.items.includes("relic1") && library.items.includes("relic2")) {
+        enterRoom(throneRoom);
+      } else {
+        enterRoom(throneRoomAlternative);
+        endGame();
+      }
+    } else {
+      storyText.innerHTML += `<p class="text-red-500">Unknown command. Try "Follow Instructions" or "Go to Demon Lord".</p>`;
+    }
+  } else if (currentRoom === library) {
+    if (command === "collect key") {
+      storyText.innerHTML += `<p class="text-black">You pick up the key, open the chest, and receive the second Relic!</p>`;
+      library.items.push("relic2");
+      storyText.innerHTML += library.scenePart2.map(p => `<p>${p}</p>`).join("");
+      inputBox.value = ""
+    } else if (command === "go to demon lord") {
+      if (tower.items.includes("relic1") && library.items.includes("relic2")) {
+        enterRoom(throneRoom);
+      } else {
+        enterRoom(throneRoomAlternative);
+        endGame();
+      }
+    } else {
+      storyText.innerHTML += `<p class="text-red-500">Unknown command. Try "Collect Key" or "Go to Demon Lord".</p>`;
+    } 
+  } else if (currentRoom === throneRoom) {
+    if (command === "use knife") {
+      endGame();
+    } else {
+      storyText.innerHTML += `<p class="text-red-500">Unknown command. Try "Use Knife".</p>`;
+    }
+  }
+}
+
+function endGame() {
+  const inputBox = document.getElementById("command-input");
+  inputBox.disabled = true;
+  inputBox.classList.add("hidden");
+
+  const restartBtn = document.getElementById("restart-btn");
+  restartBtn.classList.remove("hidden");
+
+  if (tower.items.includes("relic1") && library.items.includes("relic2")) {
+    storyText.innerHTML += `
+      <p class="text-green-600 font-bold mt-4">
+        With the final strike, the Demon Lord is defeated. The curse lifts, and light returns to the world.
+      </p>
+      <p>Congratulations, you have saved the kingdom!</p>
+    `;
+  } else {
+    storyText.innerHTML += `
+      <p>You lost the game. Better luck next time.</p>
+    `;
+  }
+}
+
+const restartBtn = document.getElementById("restart-btn");
+
+restartBtn.addEventListener("click", resetGame);
+
+function resetGame() {
+  tower.items = [];
+  library.items = [];
+
+  const inputBox = document.getElementById("command-input");
+  inputBox.classList.add("hidden");
+  inputBox.disabled = false; 
+  inputBox.value = "";
+ 
+
+  storyText.innerHTML = "";
+  sceneImage.src = "";
+  restartBtn.classList.add("hidden");
+
+  sceneImage.src = journalIntro.image;
+  storyText.innerHTML = journalIntro.paragraph.map(p => `<p>${p}</p>`).join("");
+  enterHint.textContent = "Press Enter to continue.";
+  enterHint.classList.remove("hidden");
+
+
+  document.addEventListener("keydown", handleEnter);
 }
