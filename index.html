@@ -9,7 +9,7 @@
 
 <body class="bg-orange-200 bg-opacity-70 min-h-screen flex flex-col items-center p-8">
 
-        <h1 class="text-3xl font-bold text-center mb-6 text-white">Text Fantasy Adventure Game</h1>
+        <h1 class="text-3xl font-bold text-center mb-6 text-gray-800">Text Fantasy Adventure Game</h1>
       
         <div id="content-container" class="container bg-white rounded-xl shadow-lg mx-auto px-4 py-8 max-w-4xl">
           <div id="image-container">
@@ -24,7 +24,7 @@
             </div>
             <input type="text" id="command-input" placeholder="Type your command here..." class="border rounded-md p-2 w-[200px] hidden" autofocus />
             <div>
-              <button id="restart-btn" class="px-6 py-3 rounded-xl bg-sky-600 text-white hover:bg-cyan-700 focus:outline-2 focus:outline-offset-2 focus:outline-sky-600 active:bg-cyan-700 hidden">
+              <button id="restart-btn" onclick=window.location.reload() class="px-6 py-3 rounded-xl bg-sky-600 text-white hover:bg-cyan-700 focus:outline-2 focus:outline-offset-2 focus:outline-sky-600 active:bg-cyan-700 hidden">
                 Restart Game
               </button>
             </div>

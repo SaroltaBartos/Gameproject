@@ -12,7 +12,7 @@ const journalIntro = new SceneIntro(
     [
       "Entry from the priestess's journal: I have locked him away, deep within the mountain, using the strongest spells under my command.",
       "The chains hold him down... but I can feel it — they are weakening as I write these lines.",
-      "I know the time will come when Azerak will break free and bring evil upon our world.",
+      "I know the time will come when the Demon Lord will break free and bring evil upon our world.",
       "This is why I am writing this book — to you, the one upon whom this crucial task now falls.",
       "Heed my words, follow my instructions, and... good luck."
     ],
@@ -65,8 +65,7 @@ class Room {
       this.name = name;                 
       this.image = image;               
       this.scene = null;                
-      this.items = [];                  
-      this.character = null;            
+      this.items = [];                             
     }
 }
 
@@ -101,7 +100,7 @@ library.scenePart2 = [
   "You now hold both relics. Type GO TO DEMON LORD.",
 ];
 
-const throneRoom = new Room( //only to be used if the win conditions are met
+const throneRoom = new Room( 
   "Throne Room",
   "https://i.ibb.co/Z6kr0YsB/Chat-GPT-Image-Apr-23-2025-11-34-07-AM.png"
 );
@@ -117,7 +116,7 @@ throneRoom.scene = [
   "Type USE KNIFE to defeat the demon lord.",
 ];
 
-const throneRoomAlternative = new Room( //only to be used if win conditions are NOT met
+const throneRoomAlternative = new Room( 
   "Throne Room",
   "https://i.ibb.co/Z6kr0YsB/Chat-GPT-Image-Apr-23-2025-11-34-07-AM.png"
 );
@@ -230,28 +229,3 @@ function endGame() {
 }
 
 const restartBtn = document.getElementById("restart-btn");
-
-restartBtn.addEventListener("click", resetGame);
-
-function resetGame() {
-  tower.items = [];
-  library.items = [];
-
-  const inputBox = document.getElementById("command-input");
-  inputBox.classList.add("hidden");
-  inputBox.disabled = false; 
-  inputBox.value = "";
- 
-
-  storyText.innerHTML = "";
-  sceneImage.src = "";
-  restartBtn.classList.add("hidden");
-
-  sceneImage.src = journalIntro.image;
-  storyText.innerHTML = journalIntro.paragraph.map(p => `<p>${p}</p>`).join("");
-  enterHint.textContent = "Press Enter to continue.";
-  enterHint.classList.remove("hidden");
-
-
-  document.addEventListener("keydown", handleEnter);
-}
